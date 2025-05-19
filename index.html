@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HocusPocus</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style for the front page */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+        }
+
+        /* Background styling */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #f06, #4caf50, #00bcd4);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    background-image: url("body_bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+
+        /* Animation for background gradient */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .front-page {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-title {
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 10px;
+            animation: titleAnimation 2s ease-in-out;
+        }
+
+        .game-subtitle {
+            font-size: 1.5em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        /* Title animation */
+        @keyframes titleAnimation {
+            0% { transform: scale(1); opacity: 0; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .play-button {
+            background-color: #ffffff;
+            color: #333;
+            padding: 15px 32px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background-color: #4CAF50;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-container {
+            display: none;
+        }
+
+        /* Make sure the button looks better on mobile */
+        @media (max-width: 600px) {
+            .game-title {
+                font-size: 2.5em;
+            }
+            .game-subtitle {
+                font-size: 1.2em;
+            }
+            .play-button {
+                font-size: 1.2em;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Front page -->
+    <div class="front-page">
+        <div class="game-title">HocusPocus</div>
+        <div class="game-subtitle">Let the magic unfold</div>
+        <button class="play-button" id="playButton">Play</button>
+    </div>
+
+    <!-- Game screen -->
+    <div class="game-container" id="gameContainer">
+        <div class="wrapper">
+            <canvas id="canvas1"></canvas>
+            <canvas id="canvas2"></canvas>
+            <canvas id="canvas3"></canvas>
+            <canvas id="canvas4"></canvas>
+            <canvas id="canvas5"></canvas>
+        </div>
+    </div>
+
+    <script src="setup.js"></script>
+    <script src="frogger.js"></script>
+    <script src="particles.js"></script>
+    <script src="ripples.js"></script>
+    <script src="obstacles.js"></script>
+    <script src="utilities.js"></script>
+
+    <script>
+        // Front page functionality
+        const playButton = document.getElementById('playButton');
+        const frontPage = document.querySelector('.front-page');
+        const gameContainer = document.getElementById('gameContainer');
+
+        // Play button functionality
+        playButton.addEventListener('click', function() {
+            frontPage.style.display = 'none'; // Hide the front page
+            gameContainer.style.display = 'block'; // Show the game container
+            startGame(); // Start the game logic
+        });
+
+        // Game logic initialization (example placeholder)
+        function startGame() {
+            // Optionally add any game initialization code here
+            // Game will start automatically after the "Play" button is clicked
+            animate(); // Start the game animation loop
+        }
+    </script>
+</body>
+</html>
